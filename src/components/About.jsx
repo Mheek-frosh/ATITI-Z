@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 const About = () => {
     return (
-        <section id="about" className="py-24 bg-white relative overflow-hidden">
+        <section id="about" className="py-16 md:py-24 bg-white relative overflow-hidden">
             {/* Background Decorative Element */}
             <div className="absolute top-0 left-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
 

@@ -23,7 +23,7 @@ const Hero = () => {
     }, []);
 
     return (
-        <section className="bg-primary pt-32 pb-16 md:pt-44 md:pb-24 text-white relative overflow-hidden min-h-screen flex items-center">
+        <section className="bg-primary pt-28 pb-12 md:pt-44 md:pb-24 text-white relative overflow-hidden min-h-screen flex items-center">
             {/* Background Slideshow */}
             <div className="absolute inset-0 z-0">
                 <AnimatePresence mode="wait">
@@ -57,7 +57,7 @@ const Hero = () => {
                         initial={{ opacity: 0, x: -50 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8, delay: 0.2 }}
-                        className="text-6xl md:text-8xl xl:text-9xl font-black mb-8 leading-[0.9] font-serif tracking-tight"
+                        className="text-5xl md:text-8xl xl:text-9xl font-black mb-6 md:mb-8 leading-[0.9] font-serif tracking-tight"
                     >
                         Pure <span className="text-secondary italic">Artistry</span> <br />
                         For Your <br />
@@ -73,9 +73,9 @@ const Hero = () => {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ duration: 0.8, delay: 0.4 }}
-                        className="text-lg md:text-xl text-white/60 mb-12 max-w-lg mx-auto lg:mx-0 leading-relaxed font-light"
+                        className="text-base md:text-xl text-white/60 mb-10 md:mb-12 max-w-lg mx-auto lg:mx-0 leading-relaxed font-light"
                     >
-                        Where precision meets passion. We don't just paint nails; we curate your personal signature of elegance. Experience the Atiti'z difference.
+                        Where precision meets passion. We don't just paint nails; we curate your personal signature. Experience the Atiti'z difference.
                     </motion.p>
 
                     <motion.div
@@ -85,7 +85,7 @@ const Hero = () => {
                         className="flex flex-col sm:flex-row justify-center lg:justify-start gap-6"
                     >
                         <Link to="/book">
-                            <button className="w-full sm:w-auto bg-secondary text-primary font-black py-5 px-12 rounded-2xl hover:bg-white transition-all duration-500 shadow-2xl shadow-secondary/20 flex items-center justify-center gap-3 group">
+                            <button className="w-full sm:w-auto bg-secondary text-primary font-black py-4 md:py-5 px-10 md:px-12 rounded-2xl hover:bg-white transition-all duration-500 shadow-2xl shadow-secondary/20 flex items-center justify-center gap-3 group">
                                 Reserve Your Spot
                                 <span className="group-hover:translate-x-1 transition-transform">→</span>
                             </button>
@@ -109,7 +109,7 @@ const Hero = () => {
                         <motion.div
                             animate={{ y: [0, -20, 0] }}
                             transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                            className="relative z-20 w-72 h-96 md:w-[450px] md:h-[600px] rounded-[60px] overflow-hidden border-8 border-white/5 shadow-[0_50px_100px_rgba(0,0,0,0.5)] bg-primary"
+                            className="relative z-20 w-64 h-80 md:w-[450px] md:h-[600px] rounded-[40px] md:rounded-[60px] overflow-hidden border-8 border-white/5 shadow-[0_50px_100px_rgba(0,0,0,0.5)] bg-primary mx-auto"
                         >
                             <img src={w1} alt="Nail Masterpiece" className="w-full h-full object-cover grayscale-[30%] hover:grayscale-0 transition-all duration-700" />
                         </motion.div>
@@ -118,7 +118,7 @@ const Hero = () => {
                         <motion.div
                             animate={{ x: [0, 15, 0], y: [0, 10, 0], rotate: [0, 5, 0] }}
                             transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-                            className="absolute -top-12 -right-12 md:-top-20 md:-right-20 w-40 h-40 md:w-64 md:h-64 rounded-[40px] overflow-hidden border-4 border-white/10 shadow-2xl z-30"
+                            className="absolute -top-6 -right-6 md:-top-20 md:-right-20 w-28 h-28 md:w-64 md:h-64 rounded-[30px] md:rounded-[40px] overflow-hidden border-4 border-white/10 shadow-2xl z-30"
                         >
                             <img src={w2} alt="Client Delight" className="w-full h-full object-cover" />
                         </motion.div>
@@ -127,7 +127,7 @@ const Hero = () => {
                         <motion.div
                             animate={{ x: [0, -10, 0], y: [0, -15, 0], rotate: [0, -5, 0] }}
                             transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-                            className="absolute -bottom-10 -left-10 md:-bottom-16 md:-left-16 w-32 h-32 md:w-56 md:h-56 rounded-[30px] overflow-hidden border-4 border-white/10 shadow-2xl z-30 bg-primary"
+                            className="absolute -bottom-6 -left-6 md:-bottom-16 md:-left-16 w-24 h-24 md:w-56 md:h-56 rounded-[24px] md:rounded-[30px] overflow-hidden border-4 border-white/10 shadow-2xl z-30 bg-primary"
                         >
                             <img src={w3} alt="Intricate Art" className="w-full h-full object-cover" />
                         </motion.div>

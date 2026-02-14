@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 const Promotions = () => {
     return (
-        <section className="py-24 bg-primary relative overflow-hidden">
+        <section className="py-16 md:py-24 bg-primary relative overflow-hidden">
             {/* Background decoration */}
             <div className="absolute inset-0 z-0">
                 <img

@@ -41,10 +41,10 @@ const Booking = () => {
     return (
         <div className="pt-32 pb-24 bg-gray-50 min-h-screen">
             <div className="container mx-auto px-4">
-                <div className="max-w-4xl mx-auto bg-white rounded-[40px] shadow-[0_30px_100px_rgba(0,0,0,0.05)] overflow-hidden flex flex-col md:flex-row border border-gray-100">
+                <div className="max-w-4xl mx-auto bg-white rounded-[32px] md:rounded-[40px] shadow-[0_30px_100px_rgba(0,0,0,0.05)] overflow-hidden flex flex-col md:flex-row border border-gray-100">
 
                     {/* Info Side */}
-                    <div className="md:w-2/5 bg-primary p-12 text-white relative overflow-hidden flex flex-col justify-between">
+                    <div className="md:w-2/5 bg-primary p-8 md:p-12 text-white relative overflow-hidden flex flex-col justify-between">
                         <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
                             <img src="https://images.unsplash.com/photo-1629194168233-030990499e1d?q=80&w=600&auto=format&fit=crop" className="w-full h-full object-cover" alt="" />
                         </div>
@@ -76,7 +76,7 @@ const Booking = () => {
                     </div>
 
                     {/* Form Side */}
-                    <div className="md:w-3/5 p-12 md:p-16">
+                    <div className="md:w-3/5 p-8 md:p-16">
                         <form onSubmit={handleSubmit} className="space-y-8">
                             <div>
                                 <label className="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-3 px-1">Full Name</label>
