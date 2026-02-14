@@ -30,7 +30,7 @@ const Hero = () => {
                     <motion.img
                         key={currentSlide}
                         initial={{ scale: 1.1, opacity: 0 }}
-                        animate={{ scale: 1, opacity: 0.25 }}
+                        animate={{ scale: 1, opacity: 0.45 }}
                         exit={{ opacity: 0, scale: 0.95 }}
                         transition={{ duration: 2, ease: "easeInOut" }}
                         src={slides[currentSlide]}
@@ -38,7 +38,7 @@ const Hero = () => {
                         className="w-full h-full object-cover"
                     />
                 </AnimatePresence>
-                <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/80 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-primary/60 via-primary/40 to-transparent"></div>
                 <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10 pointer-events-none"></div>
             </div>
 
