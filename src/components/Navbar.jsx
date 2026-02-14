@@ -3,6 +3,8 @@ import { Link, useLocation } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import { IoCartOutline, IoMenu, IoClose } from 'react-icons/io5';
 
+import logo from '../assets/logo.jpeg';
+
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const { setIsCartOpen, cart } = useCart();
@@ -15,8 +17,8 @@ const Navbar = () => {
     return (
         <nav className="bg-white/90 backdrop-blur-md fixed w-full z-50 top-0 start-0 border-b border-gray-100">
             <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4 px-6 md:px-10">
-                <Link to="/" className="flex items-center space-x-3">
-                    <span className="self-center text-2xl font-black whitespace-nowrap text-primary font-serif tracking-tighter italic">ATITI'Z</span>
+                <Link to="/" className="flex items-center">
+                    <img src={logo} alt="Atiti'z Nails" className="h-12 w-auto object-contain rounded-lg shadow-sm hover:scale-105 transition-transform duration-300" />
                 </Link>
 
                 <div className="flex md:order-2 items-center gap-4">

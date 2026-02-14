@@ -1,106 +1,164 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Link } from 'react-router-dom';
+import w1 from '../assets/w1.png';
+import w2 from '../assets/w2.png';
+import w3 from '../assets/w3.png';
 
 const Hero = () => {
+    const [currentSlide, setCurrentSlide] = useState(0);
+
+    const slides = [
+        "https://images.unsplash.com/photo-1632345033839-21c73b2f3d39?q=80&w=1920&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1604654894610-df63bc536371?q=80&w=1920&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1522338242992-e1a54906a8da?q=80&w=1920&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1512496015851-a90fb38ba496?q=80&w=1920&auto=format&fit=crop"
+    ];
+
+    useEffect(() => {
+        const timer = setInterval(() => {
+            setCurrentSlide((prev) => (prev + 1) % slides.length);
+        }, 5000);
+        return () => clearInterval(timer);
+    }, []);
+
     return (
-        <section className="bg-primary pt-24 pb-12 md:pt-32 md:pb-20 text-white relative overflow-hidden min-h-screen flex items-center">
-            {/* Background Image */}
+        <section className="bg-primary pt-32 pb-16 md:pt-44 md:pb-24 text-white relative overflow-hidden min-h-screen flex items-center">
+            {/* Background Slideshow */}
             <div className="absolute inset-0 z-0">
-                <motion.img
-                    initial={{ scale: 1.1, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 0.3 }}
-                    transition={{ duration: 1.5 }}
-                    src="https://images.unsplash.com/photo-1632345033839-21c73b2f3d39?q=80&w=1920&auto=format&fit=crop"
-                    alt="Salon Background"
-                    className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/80 to-transparent"></div>
+                <AnimatePresence mode="wait">
+                    <motion.img
+                        key={currentSlide}
+                        initial={{ scale: 1.1, opacity: 0 }}
+                        animate={{ scale: 1, opacity: 0.25 }}
+                        exit={{ opacity: 0, scale: 0.95 }}
+                        transition={{ duration: 2, ease: "easeInOut" }}
+                        src={slides[currentSlide]}
+                        alt="Salon Experience"
+                        className="w-full h-full object-cover"
+                    />
+                </AnimatePresence>
+                <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/80 to-transparent"></div>
+                <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10 pointer-events-none"></div>
             </div>
 
-            <div className="container mx-auto px-4 relative z-10 flex flex-col md:flex-row items-center">
-                <div className="md:w-1/2 text-center md:text-left mb-12 md:mb-0">
-                    <motion.span
+            <div className="container mx-auto px-4 relative z-10 flex flex-col lg:flex-row items-center gap-16">
+                <div className="lg:w-1/2 text-center lg:text-left">
+                    <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6 }}
-                        className="inline-block py-1 px-4 rounded-full bg-secondary/20 text-secondary border border-secondary/30 mb-6 text-sm font-semibold tracking-widest uppercase"
+                        className="inline-flex items-center gap-2 py-2 px-5 rounded-full bg-white/5 border border-white/10 mb-8 backdrop-blur-sm"
                     >
-                        PREMIUM NAIL CARE
-                    </motion.span>
+                        <span className="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+                        <span className="text-xs font-bold tracking-[0.3em] uppercase opacity-70">Luxury Experience</span>
+                    </motion.div>
 
                     <motion.h1
                         initial={{ opacity: 0, x: -50 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8, delay: 0.2 }}
-                        className="text-5xl md:text-8xl font-black mb-6 leading-tight font-serif"
+                        className="text-6xl md:text-8xl xl:text-9xl font-black mb-8 leading-[0.9] font-serif tracking-tight"
                     >
-                        Elevate Your <br />
-                        <span className="text-secondary drop-shadow-[0_2px_10px_rgba(255,215,0,0.3)]">Elegance</span>
+                        Pure <span className="text-secondary italic">Artistry</span> <br />
+                        For Your <br />
+                        <span className="relative inline-block">
+                            Hands
+                            <svg className="absolute -bottom-2 left-0 w-full h-3 text-secondary/30" viewBox="0 0 100 10" preserveAspectRatio="none">
+                                <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="4" fill="transparent" />
+                            </svg>
+                        </span>
                     </motion.h1>
 
                     <motion.p
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ duration: 0.8, delay: 0.4 }}
-                        className="text-lg md:text-xl text-gray-300 mb-10 max-w-lg mx-auto md:mx-0 leading-relaxed font-light"
+                        className="text-lg md:text-xl text-white/60 mb-12 max-w-lg mx-auto lg:mx-0 leading-relaxed font-light"
                     >
-                        Step into a world of luxury at Atiti'z Nails. Where artistry meets relaxation, and every detail is designed for your perfection.
+                        Where precision meets passion. We don't just paint nails; we curate your personal signature of elegance. Experience the Atiti'z difference.
                     </motion.p>
 
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, delay: 0.6 }}
-                        className="flex flex-col sm:flex-row justify-center md:justify-start gap-4"
+                        className="flex flex-col sm:flex-row justify-center lg:justify-start gap-6"
                     >
-                        <button className="bg-secondary text-primary font-bold py-4 px-10 rounded-full hover:bg-white hover:text-primary transition-all duration-300 transform hover:scale-105 shadow-[0_10px_30px_rgba(255,215,0,0.3)]">
-                            Book Appointment
-                        </button>
-                        <button className="bg-transparent border-2 border-white/30 text-white font-bold py-4 px-10 rounded-full hover:bg-white hover:text-primary transition-all duration-300 hover:border-white">
-                            View Lookbook
-                        </button>
+                        <Link to="/book">
+                            <button className="w-full sm:w-auto bg-secondary text-primary font-black py-5 px-12 rounded-2xl hover:bg-white transition-all duration-500 shadow-2xl shadow-secondary/20 flex items-center justify-center gap-3 group">
+                                Reserve Your Spot
+                                <span className="group-hover:translate-x-1 transition-transform">→</span>
+                            </button>
+                        </Link>
+                        <a href="#services">
+                            <button className="w-full sm:w-auto bg-white/5 border border-white/10 text-white font-bold py-5 px-12 rounded-2xl hover:bg-white/10 transition-all duration-500 backdrop-blur-md">
+                                Explore Services
+                            </button>
+                        </a>
                     </motion.div>
                 </div>
 
-                <motion.div
-                    initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
-                    animate={{ opacity: 1, scale: 1, rotate: 0 }}
-                    transition={{ duration: 1, delay: 0.4, type: "spring", stiffness: 100 }}
-                    className="md:w-1/2 flex justify-center relative"
-                >
-                    {/* Hero Image Composition */}
-                    <div className="relative w-80 h-96 md:w-[450px] md:h-[550px]">
-                        <div className="absolute -top-6 -right-6 w-full h-full border-2 border-secondary/30 rounded-[40px] transform translate-x-4 -translate-y-4"></div>
-                        <img
-                            src="https://images.unsplash.com/photo-1604654894610-df63bc536371?q=80&w=800&auto=format&fit=crop"
-                            alt="Luxury Manicure"
-                            className="w-full h-full object-cover rounded-[40px] shadow-2xl relative z-10 grayscale-[20%] hover:grayscale-0 transition-all duration-700"
-                        />
-
-                        {/* Floating Badge */}
+                <div className="lg:w-1/2 relative">
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 1, delay: 0.4 }}
+                        className="relative z-10"
+                    >
+                        {/* Main Floating Image (w1) */}
                         <motion.div
-                            animate={{ y: [0, -15, 0] }}
-                            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                            className="absolute -bottom-8 -left-8 bg-white/95 backdrop-blur-md p-5 rounded-2xl shadow-2xl z-20 flex items-center gap-4 border border-white/20"
+                            animate={{ y: [0, -20, 0] }}
+                            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                            className="relative z-20 w-72 h-96 md:w-[450px] md:h-[600px] rounded-[60px] overflow-hidden border-8 border-white/5 shadow-[0_50px_100px_rgba(0,0,0,0.5)] bg-primary"
                         >
-                            <div className="bg-secondary/20 p-3 rounded-xl text-secondary">
-                                <span className="text-3xl">⭐</span>
-                            </div>
-                            <div>
-                                <div className="font-bold text-primary text-lg">4.9 Rating</div>
-                                <div className="text-xs text-gray-500 font-medium">From 1k+ Happy Clients</div>
-                            </div>
+                            <img src={w1} alt="Nail Masterpiece" className="w-full h-full object-cover grayscale-[30%] hover:grayscale-0 transition-all duration-700" />
                         </motion.div>
 
-                        {/* Aesthetic Circles */}
-                        <div className="absolute -top-20 -left-20 w-40 h-40 bg-secondary/10 rounded-full blur-3xl -z-10"></div>
-                        <div className="absolute -bottom-20 -right-20 w-40 h-40 bg-primary/20 rounded-full blur-3xl -z-10"></div>
-                    </div>
-                </motion.div>
+                        {/* Floating Asset w2 */}
+                        <motion.div
+                            animate={{ x: [0, 15, 0], y: [0, 10, 0], rotate: [0, 5, 0] }}
+                            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+                            className="absolute -top-12 -right-12 md:-top-20 md:-right-20 w-40 h-40 md:w-64 md:h-64 rounded-[40px] overflow-hidden border-4 border-white/10 shadow-2xl z-30"
+                        >
+                            <img src={w2} alt="Client Delight" className="w-full h-full object-cover" />
+                        </motion.div>
+
+                        {/* Floating Asset w3 */}
+                        <motion.div
+                            animate={{ x: [0, -10, 0], y: [0, -15, 0], rotate: [0, -5, 0] }}
+                            transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+                            className="absolute -bottom-10 -left-10 md:-bottom-16 md:-left-16 w-32 h-32 md:w-56 md:h-56 rounded-[30px] overflow-hidden border-4 border-white/10 shadow-2xl z-30 bg-primary"
+                        >
+                            <img src={w3} alt="Intricate Art" className="w-full h-full object-cover" />
+                        </motion.div>
+
+                        {/* Stats Badge */}
+                        <motion.div
+                            initial={{ x: 50, opacity: 0 }}
+                            animate={{ x: 0, opacity: 1 }}
+                            transition={{ delay: 1.2 }}
+                            className="absolute bottom-12 -right-12 bg-white p-6 rounded-3xl shadow-2xl z-40 hidden md:block"
+                        >
+                            <div className="flex items-center gap-4">
+                                <div className="p-3 bg-secondary/10 rounded-2xl">
+                                    <span className="text-3xl">✨</span>
+                                </div>
+                                <div className="text-primary">
+                                    <p className="font-black text-2xl leading-none">5k+</p>
+                                    <p className="text-[10px] font-bold uppercase tracking-widest opacity-50">Happy Nails</p>
+                                </div>
+                            </div>
+                        </motion.div>
+                    </motion.div>
+
+                    {/* Decorative Blobs */}
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-secondary/10 rounded-full blur-[120px] -z-10 animate-pulse"></div>
+                </div>
             </div>
         </section>
     );
 };
 
 export default Hero;
+
 

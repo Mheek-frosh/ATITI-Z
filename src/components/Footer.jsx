@@ -1,4 +1,4 @@
-import React from 'react';
+import logo from '../assets/logo.jpeg';
 
 const Footer = () => {
     return (
@@ -6,7 +6,7 @@ const Footer = () => {
             <div className="container mx-auto px-4">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <div>
-                        <h3 className="text-2xl font-bold text-secondary mb-4">ATITI'Z</h3>
+                        <img src={logo} alt="Atiti'z Nails" className="h-16 w-auto object-contain rounded-xl shadow-lg mb-6 border border-white/10" />
                         <p className="text-gray-400">
                             Your premier destination for nail care and beauty. Experience the best in manicures, pedicures, and nail art.
                         </p>
