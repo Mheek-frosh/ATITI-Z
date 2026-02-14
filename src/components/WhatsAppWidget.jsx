@@ -29,9 +29,10 @@ const WhatsAppWidget = () => {
     useEffect(() => {
         if (isOpen && cart.length > 0 && !messages.find(m => m.tag === 'cart-notice')) {
             setTimeout(() => {
+                const itemNames = cart.map(item => item.name).join(', ');
                 const cartMessage = {
                     id: Date.now(),
-                    text: `I see you have ${cart.length} item(s) in your cart! 🛍️ Would you like to proceed with ordering these?`,
+                    text: `I see you have ${itemNames} in your cart! 🛍️ Would you like to proceed with ordering these?`,
                     sender: 'ai',
                     tag: 'cart-notice'
                 };
@@ -65,19 +66,31 @@ const WhatsAppWidget = () => {
 
         // Include Cart Items if any
         if (cart.length > 0) {
-            finalMessage += "*My Current Cart:*\n";
+            finalMessage += "*🛍️ MY CURRENT CART:*\n";
             cart.forEach(item => {
-                finalMessage += `- ${item.name} (${item.quantity}x)\n`;
+                finalMessage += `• ${item.name} (${item.quantity}x)\n`;
             });
             finalMessage += "\n";
         }
 
-        // Include the specific message the user just typed
-        if (msgText) {
-            finalMessage += `*My Question/Note:* ${msgText}\n\n`;
+        // Include Full Chat History (User messages only)
+        const userMessages = messages
+            .filter(m => m.sender === 'user')
+            .map(m => m.text);
+
+        if (userMessages.length > 0 || msgText) {
+            finalMessage += "*💬 MY CONVERSATION HISTORY:*\n";
+            userMessages.forEach((msg, index) => {
+                finalMessage += `${index + 1}. ${msg}\n`;
+            });
+            // Add the very last message if it wasn't already in the state (though it usually is by now)
+            if (msgText && !userMessages.includes(msgText)) {
+                finalMessage += `${userMessages.length + 1}. ${msgText}\n`;
+            }
+            finalMessage += "\n";
         }
 
-        finalMessage += "Please let me know how to proceed!";
+        finalMessage += "I am ready to finalize my order/appointment. Please let me know how to proceed! ✨";
 
         const whatsappUrl = `whatsapp://send?phone=${phoneNumber}&text=${encodeURIComponent(finalMessage)}`;
         window.location.href = whatsappUrl;
