@@ -8,14 +8,14 @@ const CartDrawer = () => {
     const { cart, isCartOpen, setIsCartOpen, removeFromCart, updateQuantity, totalPrice } = useCart();
 
     const handleCheckout = () => {
-        const phoneNumber = "09034448700";
+        const phoneNumber = "2348072222291";
         let message = "New Order from Atiti'z Nails Site:\n\n";
         cart.forEach(item => {
             message += `• ${item.name} (${item.quantity}x) - ${item.price}\n`;
         });
         message += `\nTotal: ₦${totalPrice.toLocaleString()}\n\nThank you!`;
 
-        window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, '_blank');
+        window.location.href = `whatsapp://send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`;
     };
 
     return (

@@ -22,7 +22,7 @@ const Booking = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const phoneNumber = "09034448700";
+        const phoneNumber = "2348072222291";
         const message = `Booking Request from Atiti'z Nails Site:\n\n` +
             `👤 Name: ${formData.name}\n` +
             `📞 Phone: ${formData.phone}\n` +
@@ -31,7 +31,7 @@ const Booking = () => {
             `⏰ Time: ${formData.time}\n\n` +
             `Please confirm availability!`;
 
-        window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, '_blank');
+        window.location.href = `whatsapp://send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`;
     };
 
     const handleChange = (e) => {

@@ -9,7 +9,7 @@ const WhatsAppWidget = () => {
     const [inputValue, setInputValue] = useState("");
     const [messages, setMessages] = useState([]);
     const scrollRef = useRef(null);
-    const phoneNumber = "09034448700";
+    const phoneNumber = "2348072222291";
 
     // Initial Greeting
     useEffect(() => {
@@ -79,8 +79,8 @@ const WhatsAppWidget = () => {
 
         finalMessage += "Please let me know how to proceed!";
 
-        const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(finalMessage)}`;
-        window.open(whatsappUrl, '_blank');
+        const whatsappUrl = `whatsapp://send?phone=${phoneNumber}&text=${encodeURIComponent(finalMessage)}`;
+        window.location.href = whatsappUrl;
     };
 
     return (
